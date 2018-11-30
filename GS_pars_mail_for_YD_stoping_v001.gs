@@ -45,7 +45,7 @@ for (thread in threads)
   var q = message.split('\n', 3)                  //разбиваем письмо на строки (берем всего 4, там вся нужная инфа)
   // ↓ пишем инфу в таблицу
   sheet.getRange("A"+(i+2)).setValue(q[0].match(RegExp("([a-zA-Z0-9\\-\\.]*)!"))[1]); //accname
-  sheet.getRange("B"+(i+2)).setValue(datetime.getFullYear()+'-'+ (datetime.getMonth()< 10 ? '0' : '') + datetime.getMonth() + '-' + (datetime.getDate()< 10 ? '0' : '') + datetime.getDate()); //date
+  sheet.getRange("B"+(i+2)).setValue(datetime.getFullYear()+'-'+ (datetime.getMonth()< 11 ? '0' : '') + (1+datetime.getMonth()) + '-' + (datetime.getDate()< 10 ? '0' : '') + datetime.getDate()); //date
   sheet.getRange("C"+(i+2)).setValue(q[2].match(RegExp("\\s[0-9:]*\\s")).toString().replace(" ","")); //time
   sheet.getRange("D"+(i+2)).setValue(q[2].match(RegExp("\\((.*)\\)\\s"))[1]); //campaignname
   sheet.getRange("E"+(i+2)).setValue(q[2].match(RegExp("N[0-9]*")).toString().replace("N","")); //campaignid 
